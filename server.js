@@ -14,15 +14,23 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-const Users = new Schema({
-  username: String,
-  _id: String,
-  activity: {
+const schema = new Schema({
+  username: {
+    type: String,
+    required: true
+  },
+  _id: {
+    type: String,
+    required: true
+  },
+  activity: [{
     description: String,
     duration: Number,
-    date: String
-  }
+    date: Date
+  }]
 })
+
+const Users = mongoose.model('Users', schema);
 
 app.use(express.static('public'))
 app.get('/', (req, res) => {
@@ -37,6 +45,11 @@ app.get('/', (req, res) => {
 
 app.post('/api/exercise/new-user', (req, res) => {
   console.log(req.body);
+  var _id 
+  co= require('shortid').generate();
+  co
+  
+  
 })
 
 app.post('/api/exercise/add', (req, res) => {
