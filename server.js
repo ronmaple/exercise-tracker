@@ -26,7 +26,7 @@ const schema = new Schema({
   activity: [{
     description: String,
     duration: Number,
-    date: Date
+    date: String
   }]
 })
 
@@ -91,21 +91,23 @@ app.post('/api/exercise/add', (req, res) => {
     
     date = `${year}-${month}-${day}`;
   }
-  
-  Users.findByIdAndUpdate({_id: userId}, {$push: 
-                                         
-                                         }(err, data) => {
-    if (err) console.log(err);
+  console.log('date', date);
+  Users
+    .findByIdAndUpdate(
+      { _id: userId }, 
+      { $push: { activity: 
+         {
+            description, 
+            duration, 
+            date: date
+          }
+        }
+      })
+    .then((err, data) => {
+    if (err) console.error(err);
     
     console.log('data', data);
     
-    // let activity = {
-    //   username,
-    //   description,
-    //   duration,
-    //   _id,
-    //   date
-    // }
   })
   
 
