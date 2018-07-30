@@ -84,9 +84,12 @@ app.post('/api/exercise/add', (req, res) => {
   
   if (date == '') {
     date = new Date();
-    // temporary parsing solution
-    let parsedDate = date.split('
-    console.log(date);
+  
+    let month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1;
+    let day = date.getDate();
+    let year = date.getFullYear();
+    
+    let currentDate = `${year}-${month}-${day}`;
   }
   
 })
