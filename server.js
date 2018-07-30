@@ -47,19 +47,31 @@ app.post('/api/exercise/new-user', (req, res) => {
   console.log(req.body);
   var _id = require('shortid').generate();
   var username = req.body.username;
-  
-  var profile = {
-    username,
-    _id
-  }
-  
-  console.log('profile', profile);
-  Users.find({_id}).exec(
-  let userProfile = new Users(profile);
-  
-  userProfile.save();
-  
-  res.json(profile);
+
+  Users.findOne({username}, (err, data) => {
+    console.log('_id', _id);
+    if (err) console.error(err);
+    
+    if (data.length == 0) {
+      var _id = require('shortid').generate();  
+      
+      var profile = {
+        username,
+        _id
+      }
+
+      console.log('profile', profile);
+      
+      let userProfile = new Users(profile);
+      
+      userProfile.save();
+      
+      res.json(profile)
+    } else {
+      res.send(`User profile ${username} already taken`);
+    }
+  })
+
   
   
 })
