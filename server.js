@@ -45,9 +45,21 @@ app.get('/', (req, res) => {
 
 app.post('/api/exercise/new-user', (req, res) => {
   console.log(req.body);
-  var _id 
-  co= require('shortid').generate();
-  co
+  var _id = require('shortid').generate();
+  var username = req.body.username;
+  
+  var profile = {
+    username,
+    _id
+  }
+  
+  console.log('profile', profile);
+  Users.find({_id}).exec(
+  let userProfile = new Users(profile);
+  
+  userProfile.save();
+  
+  res.json(profile);
   
   
 })
