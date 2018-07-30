@@ -78,6 +78,17 @@ app.post('/api/exercise/new-user', (req, res) => {
 
 app.post('/api/exercise/add', (req, res) => {
   console.log(req.body);
+  let { userId, description, duration, date } = req.body;
+  console.log( userId, description, duration, date);
+  parseInt(duration);
+  
+  if (date == '') {
+    date = new Date();
+    // temporary parsing solution
+    let parsedDate = date.split('
+    console.log(date);
+  }
+  
 })
 
 
