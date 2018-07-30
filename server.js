@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
+// schemas: /new-user => {username, _id }
+//          /add => 
+//                 { username, description, duration, _id, date }
+// exercise/log?{userId} => 
+//                
 
 app.post('/api/exercise/new-user', (req, res) => {
   console.log(req.body);
