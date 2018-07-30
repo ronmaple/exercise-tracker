@@ -19,6 +19,15 @@ app.get('/', (req, res) => {
 });
 
 
+app.post('/api/exercise/new-user', (req, res) => {
+  console.log(req.body);
+})
+
+app.post('/api/exercise/add', (req, res) => {
+  console.log(req.body);
+})
+
+
 // Not found middleware
 app.use((req, res, next) => {
   return next({status: 404, message: 'not found'})
@@ -43,13 +52,6 @@ app.use((err, req, res, next) => {
     .send(errMessage)
 })
 
-app.post('/api/exercise/new-user', (req, res) => {
-
-})
-
-app.post('/api/exercise/add', () => {
-
-})
 
 
 const listener = app.listen(process.env.PORT || 3000, () => {
