@@ -103,14 +103,24 @@ app.post('/api/exercise/add', (req, res) => {
           }
         }
       })
-    .then((err, data) => {
+    .exec((err, data) => {
     if (err) console.error(err);
     
-    console.log('data', data);
+    if (data == null) {
+      res.send('User does not exist');
+    }
     
+    console.log('data', data.username);
+    let activity = {
+      username: data.username,
+      description,
+      duration: parseInt(duration),
+      _id: userId,
+      date
+    }
+    
+    res.json(activity);
   })
-  
-
   
 })
 
