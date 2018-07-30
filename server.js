@@ -124,6 +124,10 @@ app.post('/api/exercise/add', (req, res) => {
   
 })
 
+app.get('/api/exercise/log?', (req, res) => {
+  console.log('req', req.query);
+})
+
 
 // Not found middleware
 app.use((req, res, next) => {
