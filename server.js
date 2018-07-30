@@ -2,16 +2,27 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
+
 const cors = require('cors')
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' )
+const { Schema } = mongoose;
 
 app.use(cors())
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+const Users = new Schema({
+  username: String,
+  _id: String,
+  activity: {
+    description: String,
+    duration: Number,
+    date: String
+  }
+})
 
 app.use(express.static('public'))
 app.get('/', (req, res) => {
