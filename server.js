@@ -43,6 +43,15 @@ app.use((err, req, res, next) => {
     .send(errMessage)
 })
 
+app.post('/api/exercise/new-user', (req, res) => {
+
+})
+
+app.post('/api/exercise/add', () => {
+
+})
+
+
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port)
 })
