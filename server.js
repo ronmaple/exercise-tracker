@@ -83,14 +83,32 @@ app.post('/api/exercise/add', (req, res) => {
   parseInt(duration);
   
   if (date == '') {
-    date = new Date();
+    let current = new Date();
   
-    let month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1;
-    let day = date.getDate();
-    let year = date.getFullYear();
+    let month = (current.getMonth() + 1) < 10 ? '0' + (current.getMonth() + 1).toString() : current.getMonth() + 1;
+    let day = current.getDate();
+    let year = current.getFullYear();
     
-    let currentDate = `${year}-${month}-${day}`;
+    date = `${year}-${month}-${day}`;
   }
+  
+  Users.findByIdAndUpdate({_id: userId}, {$push: 
+                                         
+                                         }(err, data) => {
+    if (err) console.log(err);
+    
+    console.log('data', data);
+    
+    // let activity = {
+    //   username,
+    //   description,
+    //   duration,
+    //   _id,
+    //   date
+    // }
+  })
+  
+
   
 })
 
