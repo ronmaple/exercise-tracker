@@ -124,8 +124,13 @@ app.post('/api/exercise/add', (req, res) => {
   
 })
 
-app.get('/api/exercise/log?', (req, res) => {
-  console.log('req', req.query);
+app.get('/api/exercise/log', (req, res) => {
+  console.log('req', req.query.userId);
+  
+  let userId = req.query.userId;
+  console.log('userId', userId);
+  
+  if (u
 })
 
 
