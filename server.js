@@ -130,10 +130,49 @@ app.get('/api/exercise/log', (req, res) => {
   let userId = req.query.userId;
   console.log('userId', userId);
   
-  if (u
+  Users.findOne({_id: userId}, (err, data) => {
+    if (err) console.error(err);
+    
+    let { _id, username, activity:logs } = data;
+    
+    let count = logs.length;
+    
+    console.log('count', count);
+    console.log('data', data);
+    console.log('_id', _id);
+    console.log('username', username);
+    console.log('logs', logs);
+    
+    let log = logs.map(i => {
+      console.log('i', i);
+      
+      i.
+    })
+    let result = {
+      _id,
+      username,
+      count
+    }
+  })
 })
 
+/*
+  api/exercise/log?userId={}
+  
+  {
+    _id,
+    username,
+    count,
+    log: [
+      {
+        description,
+        duration,
+        date
+      }
+    ]
+  }
 
+*/
 // Not found middleware
 app.use((req, res, next) => {
   return next({status: 404, message: 'not found'})
